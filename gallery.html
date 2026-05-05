@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery – Ankah Farms | Scenes from the Farm</title>
+<meta name="description" content="A visual look at Ankah Farms — our catfish ponds, farm life, and the nature behind Nature's Goodness in Kotei Daduako, Ghana.">
+<link rel="stylesheet" href="style.css">
+<style>
+/* GALLERY GRID */
+.gallery-section { background: var(--offwhite); }
+.gallery-intro { max-width: 600px; margin-bottom: 60px; }
+
+.gallery-masonry {
+  columns: 3; column-gap: 20px;
+}
+.gallery-item {
+  break-inside: avoid; margin-bottom: 20px;
+  border-radius: var(--r-lg); overflow: hidden;
+  position: relative; cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.gallery-item:hover { transform: scale(1.015); box-shadow: var(--shadow-lg); }
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+
+.gallery-scene {
+  width: 100%; display: block;
+}
+.gallery-item:nth-child(1) .gallery-scene { height: 320px; }
+.gallery-item:nth-child(2) .gallery-scene { height: 220px; }
+.gallery-item:nth-child(3) .gallery-scene { height: 260px; }
+.gallery-item:nth-child(4) .gallery-scene { height: 260px; }
+.gallery-item:nth-child(5) .gallery-scene { height: 340px; }
+.gallery-item:nth-child(6) .gallery-scene { height: 200px; }
+.gallery-item:nth-child(7) .gallery-scene { height: 240px; }
+.gallery-item:nth-child(8) .gallery-scene { height: 280px; }
+.gallery-item:nth-child(9) .gallery-scene { height: 220px; }
+
+.gallery-overlay {
+  position: absolute; inset: 0; opacity: 0; transition: opacity 0.3s;
+  background: rgba(8,24,15,0.55);
+  display: flex; align-items: flex-end; padding: 20px;
+}
+.gallery-overlay-label {
+  color: #fff; font-size: 0.85rem; font-weight: 500;
+  background: rgba(77,184,64,0.8); padding: 6px 14px; border-radius: 100px;
+}
+
+/* ADD YOUR OWN PHOTOS CTA */
+.photo-cta {
+  background: var(--cream); padding: 80px 64px; text-align: center;
+}
+.photo-cta-box {
+  max-width: 580px; margin: 0 auto;
+  background: #fff; border-radius: var(--r-xl); padding: 56px 48px;
+  border: 2px dashed rgba(77,184,64,0.3);
+}
+.photo-cta-box .icon {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: rgba(77,184,64,0.1); margin: 0 auto 24px;
+  display: flex; align-items: center; justify-content: center;
+}
+.photo-cta-box .icon svg { width: 34px; height: 34px; }
+.photo-cta-box h3 { font-size: 1.6rem; margin-bottom: 14px; }
+.photo-cta-box p { font-size: 0.95rem; line-height: 1.75; max-width: 400px; margin: 0 auto 28px; }
+
+@media (max-width: 1024px) {
+  .gallery-masonry { columns: 2; }
+  .photo-cta { padding: 60px 24px; }
+  .photo-cta-box { padding: 40px 28px; }
+}
+@media (max-width: 640px) {
+  .gallery-masonry { columns: 1; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M3 15 Q7 12 12 14 Q17 12 21 15" stroke="#08180f" stroke-width="1.6" stroke-linecap="round" fill="none"/><path d="M3 18 Q7 15 12 17 Q17 15 21 18" stroke="#08180f" stroke-width="1.6" stroke-linecap="round" fill="none"/><rect x="8" y="5" width="8" height="8" rx="1" stroke="#08180f" stroke-width="1.5" fill="none"/><path d="M8 7.5L12 5L16 7.5" stroke="#08180f" stroke-width="1.5" fill="none"/><circle cx="18" cy="5.5" r="1.8" stroke="#08180f" stroke-width="1.3" fill="none"/></svg></div>
+    <span class="nav-logo-text">Ankah <span>Farms</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="gallery.html" class="active">Gallery</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="https://wa.me/233539332287" target="_blank" class="nav-wa"><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp</a>
+    <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="mobileClose">×</button>
+  <a href="index.html">Home</a><a href="about.html">About</a><a href="products.html">Products</a><a href="gallery.html">Gallery</a><a href="contact.html">Contact</a>
+  <a href="https://wa.me/233539332287" target="_blank" style="color:#25d366">WhatsApp Us</a>
+</div>
+
+<section class="page-hero">
+  <div class="page-hero-content anim-up">
+    <span class="section-tag light">The Farm in Pictures</span>
+    <h1>Life at<br/><em style="font-style:italic;color:var(--lime)">Ankah Farms</em></h1>
+    <p>Illustrated scenes from our ponds, our land, and our daily work in Kotei Daduako. Real photos coming soon as we grow.</p>
+  </div>
+</section>
+
+<section class="gallery-section section">
+  <div class="gallery-intro">
+    <span class="section-tag">Farm Scenes</span>
+    <h2>From Our Ponds<br/>to Your Table</h2>
+    <div class="divider"></div>
+    <p>These illustrations capture the spirit of Ankah Farms. Once we have real photos from the farm, this gallery will be updated with the actual sights and faces behind Nature's Goodness.</p>
+  </div>
+
+  <div class="gallery-masonry">
+
+    <!-- 1: Catfish pond wide -->
+    <div class="gallery-item" data-aos>
+      <svg class="gallery-scene" viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="sky1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#87CEEB"/><stop offset="100%" stop-color="#c8e6f5"/></linearGradient>
+          <linearGradient id="water1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1aa3cc"/><stop offset="100%" stop-color="#0f6680"/></linearGradient>
+          <linearGradient id="land1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3a8c50"/><stop offset="100%" stop-color="#1a5c30"/></linearGradient>
+        </defs>
+        <rect width="400" height="320" fill="url(#sky1)"/>
+        <!-- clouds -->
+        <ellipse cx="80" cy="50" rx="45" ry="18" fill="#fff" opacity="0.8"/>
+        <ellipse cx="110" cy="44" rx="35" ry="15" fill="#fff" opacity="0.9"/>
+        <ellipse cx="300" cy="60" rx="55" ry="20" fill="#fff" opacity="0.7"/>
+        <ellipse cx="330" cy="54" rx="40" ry="16" fill="#fff" opacity="0.85"/>
+        <!-- trees bg -->
+        <rect x="0" y="120" width="400" height="8" fill="#145230" opacity="0.5"/>
+        <ellipse cx="30" cy="115" rx="20" ry="25" fill="#1a5c30"/>
+        <rect x="27" y="130" width="6" height="20" fill="#5c3a1e"/>
+        <ellipse cx="70" cy="108" rx="25" ry="30" fill="#2e7d4f"/>
+        <rect x="67" y="128" width="6" height="22" fill="#5c3a1e"/>
+        <ellipse cx="340" cy="112" rx="22" ry="28" fill="#1a5c30"/>
+        <rect x="337" y="130" width="6" height="20" fill="#5c3a1e"/>
+        <ellipse cx="375" cy="107" rx="26" ry="32" fill="#2e7d4f"/>
+        <rect x="372" y="128" width="6" height="22" fill="#5c3a1e"/>
+        <!-- ground -->
+        <rect x="0" y="135" width="400" height="185" fill="url(#land1)"/>
+        <!-- pond -->
+        <ellipse cx="200" cy="240" rx="160" ry="65" fill="url(#water1)"/>
+        <!-- water shimmer -->
+        <path d="M80 228 Q120 222 160 228 Q200 222 240 228 Q280 222 320 228" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" fill="none"/>
+        <path d="M60 242 Q120 236 180 242 Q240 236 300 242 Q340 236 360 242" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" fill="none"/>
+        <path d="M90 255 Q140 249 200 255 Q260 249 310 255" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" fill="none"/>
+        <!-- fish in pond -->
+        <ellipse cx="140" cy="235" rx="22" ry="9" fill="#2fa8cc" opacity="0.9"/>
+        <path d="M162 235 L172 228 L174 235 L172 242Z" fill="#1a7a99" opacity="0.8"/>
+        <circle cx="126" cy="233" r="4" fill="#fff" opacity="0.9"/><circle cx="127" cy="233" r="2.2" fill="#08180f"/>
+        <path d="M116 232 Q112 228 108 224" stroke="#08180f" stroke-width="1" stroke-linecap="round" fill="none"/>
+        <path d="M116 232 Q110 232 106 234" stroke="#08180f" stroke-width="1" stroke-linecap="round" fill="none"/>
+        <path d="M116 235 Q112 240 108 245" stroke="#08180f" stroke-width="1" stroke-linecap="round" fill="none"/>
+        <ellipse cx="260" cy="248" rx="18" ry="7" fill="#1aa3cc" opacity="0.8"/>
+        <path d="M278 248 L286 242 L288 248 L286 254Z" fill="#0f6680" opacity="0.8"/>
+        <circle cx="248" cy="246" r="3.5" fill="#fff" opacity="0.9"/><circle cx="249" cy="246" r="1.8" fill="#08180f"/>
+        <path d="M238 245 Q234 241 230 237" stroke="#08180f" stroke-width="1" stroke-linecap="round" fill="none"/>
+        <path d="M238 248 Q234 252 230 257" stroke="#08180f" stroke-width="1" stroke-linecap="round" fill="none"/>
+        <!-- pond border -->
+        <ellipse cx="200" cy="240" rx="160" ry="65" fill="none" stroke="#145230" stroke-width="3"/>
+        <!-- sun -->
+        <circle cx="340" cy="38" r="22" fill="#FFD700" opacity="0.9"/>
+        <circle cx="340" cy="38" r="16" fill="#FFF176"/>
+      </svg>
+      <div class="gallery-overlay"><span class="gallery-overlay-label">The Catfish Ponds</span></div>
+    </div>
+
+    <!-- 2: Close-up catfish -->
+    <div class="gallery-item" data-aos>
+      <svg class="gallery-scene" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="w2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0f6680"/><stop offset="100%" stop-color="#083d50"/></linearGradient></defs>
+        <rect width="400" height="220" fill="url(#w2)"/>
+        <!-- bubbles -->
+        <circle cx="60" cy="40" r="8" stroke="rgba(255,255,255,0.3)" stroke-width="1.2" fill="none"/>
+        <circle cx="80" cy="20" r="5" stroke="rgba(255,255,255,0.25)" stroke-width="1" fill="none"/>
+        <circle cx="320" cy="50" r="7" stroke="rgba(255,255,255,0.3)" stroke-width="1.2" fill="none"/>
+        <circle cx="350" cy="25" r="4" stroke="rgba(255,255,255,0.2)" stroke-width="1" fill="none"/>
+        <!-- big catfish centred -->
+        <ellipse cx="210" cy="115" rx="145" ry="56" fill="#2fa8cc" opacity="0.92"/>
+        <ellipse cx="200" cy="130" rx="108" ry="34" fill="#1a7a99" opacity="0.55"/>
+        <path d="M350 115 L395 78 L400 115 L395 152Z" fill="#1a7a99"/>
+        <path d="M160 52 Q210 34 260 52 L260 68 Q210 50 160 68Z" fill="#1a7a99" opacity="0.8"/>
+        <path d="M144 128 Q116 152 98 178 Q132 162 158 144Z" fill="#1a7a99" opacity="0.8"/>
+        <circle cx="60" cy="108" r="18" fill="#fff"/>
+        <circle cx="65" cy="104" r="11" fill="#08180f"/>
+        <circle cx="70" cy="100" r="3.5" fill="#fff"/>
+        <path d="M30 124 Q42 138 58 128" stroke="#08180f" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M26 108 Q4 94 -10 80" stroke="#08180f" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <path d="M26 108 Q2 108 -12 114" stroke="#08180f" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <path d="M26 116 Q4 132 -10 150" stroke="#08180f" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <!-- scale lines -->
+        <path d="M110 54 Q146 88 110 118" stroke="#fff" stroke-width="1.2" opacity="0.15" fill="none"/>
+        <path d="M155 44 Q196 82 155 118" stroke="#fff" stroke-width="1.2" opacity="0.15" fill="none"/>
+        <path d="M200 40 Q244 80 200 118" stroke="#fff" stroke-width="1.2" opacity="0.15" fill="none"/>
+        <path d="M246 46 Q288 84 246 118" stroke="#fff" stroke-width="1.2" opacity="0.15" fill="none"/>
+        <path d="M290 56 Q326 88 290 118" stroke="#fff" stroke-width="1.2" opacity="0.15" fill="none"/>
+        <!-- water shimmer -->
+        <path d="M0 180 Q100 170 200 180 Q300 170 400 180" stroke="rgba(255,255,255,0.1)" stroke-width="2" fill="none"/>
+      </svg>
+      <div class="gallery-overlay"><span class="gallery-overlay-label">Premium Catfish Up Close</span></div>
+    </div>
+
+    <!-- 3: Sunrise over farm -->
+    <div class="gallery-item" data-aos>
+      <svg class="gallery-scene" viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="dawn" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#1a1a2e"/>
+            <stop offset="40%" stop-color="#e8731a"/>
+            <stop offset="70%" stop-color="#ffc14a"/>
+            <stop offset="100%" stop-color="#fff59d"/>
+          </linearGradient>
+          <radialGradient id="sun3" cx="50%" cy="60%" r="30%"><stop offset="0%" stop-color="#FFF9C4" stop-opacity="1"/><stop offset="100%" stop-color="#FFA726" stop-opacity="0"/></radialGradient>
+        </defs>
+        <rect width="400" height="260" fill="url(#dawn)"/>
+        <ellipse cx="200" cy="155" rx="180" ry="60" fill="url(#sun3)" opacity="0.7"/>
+        <!-- hills silhouette -->
+        <path d="M0 180 Q50 150 100 165 Q150 145 200 160 Q250 145 300 162 Q350 148 400 175 L400 260 L0 260Z" fill="#0c2818"/>
+        <!-- trees silhouette -->
+        <path d="M20 180 L30 145 L40 180Z" fill="#08180f"/>
+        <path d="M25 152 Q30 138 35 152Z" fill="#08180f"/>
+        <path d="M360 178 L372 140 L384 178Z" fill="#08180f"/>
+        <path d="M366 147 Q372 132 378 147Z" fill="#08180f"/>
+        <path d="M180 185 L194 148 L208 185Z" fill="#08180f"/>
+        <path d="M186 154 Q194 138 202 154Z" fill="#08180f"/>
+        <!-- stars -->
+        <circle cx="60" cy="25" r="1.5" fill="#fff" opacity="0.8"/>
+        <circle cx="140" cy="15" r="1" fill="#fff" opacity="0.7"/>
+        <circle cx="280" cy="30" r="1.5" fill="#fff" opacity="0.8"/>
+        <circle cx="350" cy="18" r="1" fill="#fff" opacity="0.7"/>
+        <circle cx="100" cy="45" r="1" fill="#fff" opacity="0.5"/>
+      </svg>
+      <div class="gallery-overlay"><span class="gallery-overlay-label">Sunrise at the Farm</span></div>
+    </div>
+
+    <!-- 4: Farm building / barn -->
+    <div class="gallery-item" data-aos>
+      <svg class="gallery-scene" viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="sky4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c8e6f5"/><stop offset="100%" stop-color="#e8f5e1"/></linearGradient></defs>
+        <rect width="400" height="260" fill="url(#sky4)"/>
+        <!-- ground -->
+        <rect x="0" y="185" width="400" height="75" fill="#2e7d4f"/>
+        <rect x="0" y="185" width="400" height="8" fill="#1a5c30"/>
+        <!-- path -->
+        <path d="M160 260 Q180 220 200 200 Q220 220 240 260Z" fill="#c8a84c" opacity="0.5"/>
+        <!-- barn -->
+        <rect x="100" y="115" width="200" height="90" fill="#8B4513"/>
+        <path d="M90 120 L200 60 L310 120Z" fill="#6B2E0E"/>
+        <!-- barn doors -->
+        <rect x="155" y="155" width="40" height="50" rx="2" fill="#5c2a0a"/>
+        <rect x="205" y="155" width="40" height="50" rx="2" fill="#5c2a0a"/>
+        <line x1="175" y1="155" x2="175" y2="205" stroke="#4a200a" stroke-width="2"/>
+        <line x1="225" y1="155" x2="225" y2="205" stroke="#4a200a" stroke-width="2"/>
+        <!-- windows -->
+        <rect x="115" y="130" width="30" height="28" rx="2" fill="#87CEEB" opacity="0.8"/>
+        <line x1="130" y1="130" x2="130" y2="158" stroke="#5c2a0a" stroke-width="1.5"/>
+        <line x1="115" y1="144" x2="145" y2="144" stroke="#5c2a0a" stroke-width="1.5"/>
+        <rect x="255" y="130" width="30" height="28" rx="2" fill="#87CEEB" opacity="0.8"/>
+        <line x1="270" y1="130" x2="270" y2="158" stroke="#5c2a0a" stroke-width="1.5"/>
+        <line x1="255" y1="144" x2="285" y2="144" stroke="#5c2a0a" stroke-width="1.5"/>
+        <!-- weather vane -->
+        <line x1="200" y1="60" x2="200" y2="35" stroke="#888" stroke-width="2"/>
+        <path d="M185 42 L200 38 L215 42 L200 46Z" fill="#c8a84c"/>
+        <!-- trees -->
+        <ellipse cx="60" cy="160" rx="30" ry="38" fill="#2e7d4f"/>
+        <rect x="57" y="188" width="6" height="22" fill="#5c3a1e"/>
+        <ellipse cx="340" cy="155" rx="28" ry="35" fill="#1a5c30"/>
+        <rect x="337" y="182" width="6" height="20" fill="#5c3a1e"/>
+        <!-- clouds -->
+        <ellipse cx="80" cy="40" rx="40" ry="16" fill="#fff" opacity="0.85"/>
+        <ellipse cx="105" cy="35" rx="32" ry="14" fill="#fff" opacity="0.9"/>
+        <ellipse cx="300" cy="50" rx="45" ry="18" fill="#fff" opacity="0.8"/>
+      </svg>
+      <div class="gallery-overlay"><span class="gallery-overlay-label">The Farm Building</span></div>
+    </div>
+
+    <!-- 5: Multiple fish in pond (tall) -->
+    <div class="gallery-item" data-aos>
+      <svg class="gallery-scene" viewBox="0 0 400 340" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="deep5" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0a4a60"/><stop offset="100%" stop-color="#051e28"/></linearGradient></defs>
+        <rect width="400" height="340" fill="url(#deep5)"/>
+        <!-- light shafts from above -->
+        <path d="M100 0 L80 340" stroke="rgba(255,255,255,0.04)" stroke-width="30" fill="none"/>
+        <path d="M200 0 L190 340" stroke="rgba(255,255,255,0.03)" stroke-width="40" fill="none"/>
+        <path d="M320 0 L310 340" stroke="rgba(255,255,255,0.04)" stroke-width="25" fill="none"/>
+        <!-- surface ripple at top -->
+        <path d="M0 18 Q50 8 100 18 Q150 8 200 18 Q250 8 300 18 Q350 8 400 18" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" fill="none"/>
+        <path d="M0 32 Q50 22 100 32 Q150 22 200 32 Q250 22 300 32 Q350 22 400 32" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" fill="none"/>
+        <!-- fish 1 big -->
+        <ellipse cx="200" cy="100" rx="120" ry="44" fill="#2fa8cc" opacity="0.9"/>
+        <ellipse cx="192" cy="114" rx="88" ry="26" fill="#1a7a99" opacity="0.5"/>
+        <path d="M316 100 L356 72 L360 100 L356 128Z" fill="#1a7a99"/>
+        <path d="M168 50 Q200 38 232 50 L232 62 Q200 48 168 62Z" fill="#1a7a99" opacity="0.8"/>
+        <circle cx="84" cy="96" r="14" fill="#fff"/>
+        <circle cx="88" cy="93" r="8.5" fill="#08180f"/>
+        <circle cx="91" cy="91" r="2.5" fill="#fff"/>
+        <path d="M62 106 Q72 116 82 108" stroke="#08180f" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M68 96 Q52 86 42 76" stroke="#08180f" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+        <path d="M68 96 Q50 96 38 100" stroke="#08180f" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+        <path d="M68 102 Q52 114 42 128" stroke="#08180f" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+        <!-- fish 2 medium -->
+        <ellipse cx="120" cy="210" rx="80" ry="30" fill="#1aa3cc" opacity="0.75"/>
+        <path d="M198 210 L224 192 L227 210 L224 228Z" fill="#0f6680"/>
+        <path d="M105 182 Q120 174 135 182 L135 190 Q120 181 105 190Z" fill="#0f6680" opacity="0.8"/>
+        <circle cx="52" cy="207" r="9" fill="#fff"/>
+        <circle cx="55" cy="205" r="5.5" fill="#08180f"/>
+        <circle cx="57" cy="203" r="1.8" fill="#fff"/>
+        <path d="M38 213 Q44 220 52 215" stroke="#08180f" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <path d="M40 207 Q30 200 22 193" stroke="#08180f" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+        <path d="M40 207 Q28 207 20 210" stroke="#08180f" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+        <path d="M40 211 Q30 220 22 230" stroke="#08180f" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+        <!-- fish 3 small -->
+        <ellipse cx="300" cy="270" rx="60" ry="22" fill="#2fa8cc" opacity="0.65"/>
+        <path d="M358 270 L378 256 L380 270 L378 284Z" fill="#0f6680"/>
+        <circle cx="250" cy="268" r="7" fill="#fff"/>
+        <circle cx="252" cy="267" r="4.5" fill="#08180f"/>
+        <path d="M242 272 Q247 278 252 274" stroke="#08180f" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+        <path d="M242 267 Q234 262 226 256" stroke="#08180f" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+        <path d="M242 267 Q232 267 224 270" stroke="#08180f" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+        <path d="M242 271 Q234 278 226 286" stroke="#08180f" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+        <!-- bubbles -->
+        <circle cx="380" cy="60" r="6"   stroke="rgba(255,255,255,0.3)" stroke-width="1.2" fill="none"/>
+        <circle cx="374" cy="42" r="4"   stroke="rgba(255,255,255,0.25)" stroke-width="1" fill="none"/>
+        <circle cx="384" cy="28" r="2.5" stroke="rgba(255,255,255,0.2)" stroke-width="1" fill="none"/>
+        <circle cx="22" cy="160" r="5"   stroke="rgba(255,255,255,0.25)" stroke-width="1" fill="none"/>
+        <circle cx="18" cy="143" r="3"   stroke="rgba(255,255,255,0.2)" stroke-width="1" fill="none"/>
+      </svg>
+      <div class="gallery-overlay"><span class="gallery-overlay-label">Life Beneath the Surface</span></div>
+    </div>
+
+    <!-- 6: Harvest day -->
+    <div class="gallery-item" data-aos>
+      <svg class="gallery-scene" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="harvest" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c8e6f5"/><stop offset="100%" stop-color="#e8f5e1"/></linearGradient></defs>
+        <rect width="400" height="200" fill="url(#harvest)"/>
+        <rect x="0" y="145" width="400" height="55" fill="#2e7d4f"/>
+        <!-- table / surface -->
+        <rect x="60" y="118" width="280" height="14" rx="3" fill="#8B6914"/>
+        <rect x="80" y="132" width="8" height="35" fill="#6B4E10"/>
+        <rect x="312" y="132" width="8" height="35" fill="#6B4E10"/>
+        <!-- bucket -->
+        <path d="M155 90 L165 118 L215 118 L225 90Z" fill="#2196F3" opacity="0.85"/>
+        <path d="M155 90 Q190 84 225 90" stroke="#1565C0" stroke-width="2" fill="none"/>
+        <path d="M158 90 Q190 82 222 90" stroke="rgba(255,255,255,0.4)" stroke-width="1" fill="none"/>
+        <!-- fish in bucket -->
+        <ellipse cx="175" cy="100" rx="16" ry="7" fill="#1aa3cc" opacity="0.9"/>
+        <ellipse cx="205" cy="104" rx="14" ry="6" fill="#2fa8cc" opacity="0.85"/>
+        <path d="M190 100 Q192 96 194 100" stroke="#0f6680" stroke-width="1.5" fill="none"/>
+        <!-- net -->
+        <path d="M260 80 Q310 95 300 130" stroke="#8B6914" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <ellipse cx="268" cy="110" rx="28" ry="20" fill="none" stroke="#8B6914" stroke-width="1.5" stroke-dasharray="4 3" transform="rotate(-15 268 110)"/>
+        <!-- fish in net -->
+        <ellipse cx="270" cy="112" rx="16" ry="7" fill="#1aa3cc" opacity="0.75" transform="rotate(-15 270 112)"/>
+        <!-- sun -->
+        <circle cx="350" cy="35" r="28" fill="#FFD700" opacity="0.6"/>
+        <circle cx="350" cy="35" r="18" fill="#FFF9C4" opacity="0.8"/>
+      </svg>
+      <div class="gallery-overlay"><span class="gallery-overlay-label">Harvest Day</span></div>
+    </div>
+
+    <!-- 7: Lush green land -->
+    <div class="gallery-item" data-aos>
+      <svg class="gallery-scene" viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="sky7" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#87CEEB"/><stop offset="100%" stop-color="#e0f4ff"/></linearGradient>
+          <linearGradient id="ground7" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4CAF50"/><stop offset="100%" stop-color="#1a5c30"/></linearGradient>
+        </defs>
+        <rect width="400" height="240" fill="url(#sky7)"/>
+        <rect x="0" y="140" width="400" height="100" fill="url(#ground7)"/>
+        <!-- rolling hills -->
+        <path d="M0 155 Q100 120 200 140 Q300 120 400 150 L400 240 L0 240Z" fill="#2e7d4f"/>
+        <!-- rows of crops future -->
+        <path d="M20 190 Q200 180 380 190" stroke="#1a5c30" stroke-width="3" fill="none"/>
+        <path d="M20 205 Q200 195 380 205" stroke="#1a5c30" stroke-width="3" fill="none"/>
+        <path d="M20 220 Q200 210 380 220" stroke="#145230" stroke-width="3" fill="none"/>
+        <!-- small plants along rows -->
+        <path d="M60 190 Q63 183 66 190" stroke="#4CAF50" stroke-width="2" fill="none"/>
+        <path d="M100 190 Q103 183 106 190" stroke="#4CAF50" stroke-width="2" fill="none"/>
+        <path d="M140 190 Q143 183 146 190" stroke="#4CAF50" stroke-width="2" fill="none"/>
+        <path d="M180 190 Q183 183 186 190" stroke="#4CAF50" stroke-width="2" fill="none"/>
+        <path d="M220 190 Q223 183 226 190" stroke="#4CAF50" stroke-width="2" fill="none"/>
+        <path d="M260 190 Q263 183 266 190" stroke="#4CAF50" stroke-width="2" fill="none"/>
+        <path d="M300 190 Q303 183 306 190" stroke="#4CAF50" stroke-width="2" fill="none"/>
+        <path d="M340 190 Q343 183 346 190" stroke="#4CAF50" stroke-width="2" fill="none"/>
+        <!-- trees -->
+        <ellipse cx="40" cy="130" rx="26" ry="32" fill="#1a5c30"/>
+        <rect x="37" y="155" width="6" height="18" fill="#5c3a1e"/>
+        <ellipse cx="365" cy="125" rx="28" ry="35" fill="#2e7d4f"/>
+        <rect x="362" y="152" width="6" height="18" fill="#5c3a1e"/>
+        <!-- clouds -->
+        <ellipse cx="120" cy="45" rx="50" ry="20" fill="#fff" opacity="0.9"/>
+        <ellipse cx="150" cy="38" rx="38" ry="16" fill="#fff" opacity="0.95"/>
+        <ellipse cx="280" cy="55" rx="55" ry="22" fill="#fff" opacity="0.85"/>
+        <ellipse cx="310" cy="48" rx="40" ry="17" fill="#fff" opacity="0.9"/>
+      </svg>
+      <div class="gallery-overlay"><span class="gallery-overlay-label">Our Land — Future Crops</span></div>
+    </div>
+
+    <!-- 8: Night pond with stars -->
+    <div class="gallery-item" data-aos>
+      <svg class="gallery-scene" viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="night8" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0a0a1a"/><stop offset="100%" stop-color="#0c2818"/></linearGradient>
+          <radialGradient id="moon8" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#FFF9C4"/><stop offset="100%" stop-color="#FFF176"/></radialGradient>
+        </defs>
+        <rect width="400" height="280" fill="url(#night8)"/>
+        <!-- stars -->
+        <circle cx="30" cy="20" r="1.5" fill="#fff" opacity="0.9"/>
+        <circle cx="80" cy="35" r="1" fill="#fff" opacity="0.8"/>
+        <circle cx="140" cy="15" r="1.5" fill="#fff" opacity="0.9"/>
+        <circle cx="200" cy="28" r="1" fill="#fff" opacity="0.7"/>
+        <circle cx="260" cy="12" r="1.5" fill="#fff" opacity="0.9"/>
+        <circle cx="320" cy="40" r="1" fill="#fff" opacity="0.8"/>
+        <circle cx="380" cy="18" r="1.5" fill="#fff" opacity="0.9"/>
+        <circle cx="50" cy="60" r="1" fill="#fff" opacity="0.7"/>
+        <circle cx="170" cy="50" r="1.5" fill="#fff" opacity="0.85"/>
+        <circle cx="350" cy="65" r="1" fill="#fff" opacity="0.75"/>
+        <!-- moon -->
+        <circle cx="320" cy="55" r="30" fill="url(#moon8)" opacity="0.9"/>
+        <circle cx="308" cy="45" r="22" fill="#0a0a1a" opacity="0.4"/>
+        <!-- moon reflection in pond -->
+        <ellipse cx="200" cy="195" rx="170" ry="70" fill="#0f3a4a"/>
+        <ellipse cx="200" cy="195" rx="168" ry="68" fill="#0a2a38"/>
+        <!-- moon on water -->
+        <ellipse cx="200" cy="185" rx="22" ry="8" fill="rgba(255,249,196,0.25)"/>
+        <path d="M40 182 Q120 172 200 178 Q280 172 360 182" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" fill="none"/>
+        <path d="M50 196 Q130 186 200 192 Q270 186 350 196" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" fill="none"/>
+        <!-- night fish silhouette -->
+        <ellipse cx="200" cy="200" rx="90" ry="34" fill="#1aa3cc" opacity="0.3"/>
+        <path d="M286 200 L310 184 L314 200 L310 216Z" fill="#0f6680" opacity="0.3"/>
+        <!-- tree silhouettes -->
+        <path d="M10 150 L22 105 L34 150Z" fill="#040c08"/>
+        <path d="M16 112 Q22 96 28 112Z" fill="#040c08"/>
+        <path d="M360 145 L374 98 L388 145Z" fill="#040c08"/>
+        <path d="M367 106 Q374 90 381 106Z" fill="#040c08"/>
+        <!-- ground -->
+        <rect x="0" y="255" width="400" height="25" fill="#040c08"/>
+      </svg>
+      <div class="gallery-overlay"><span class="gallery-overlay-label">The Ponds at Night</span></div>
+    </div>
+
+    <!-- 9: Kotei Daduako landscape -->
+    <div class="gallery-item" data-aos>
+      <svg class="gallery-scene" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="sky9" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c8e6f5"/><stop offset="60%" stop-color="#e8f5e1"/></linearGradient>
+          <linearGradient id="g9" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4CAF50"/><stop offset="100%" stop-color="#1a5c30"/></linearGradient>
+        </defs>
+        <rect width="400" height="220" fill="url(#sky9)"/>
+        <rect x="0" y="130" width="400" height="90" fill="url(#g9)"/>
+        <!-- horizon hills -->
+        <path d="M0 138 Q80 108 160 125 Q240 108 320 122 Q360 112 400 130 L400 220 L0 220Z" fill="#2e7d4f"/>
+        <!-- road/path -->
+        <path d="M180 220 Q190 175 200 155 Q210 175 220 220Z" fill="#c8a84c" opacity="0.6"/>
+        <!-- ankah sign post -->
+        <rect x="195" y="108" width="5" height="52" fill="#5c3a1e"/>
+        <rect x="180" y="108" width="52" height="22" rx="3" fill="#0c2818"/>
+        <text x="206" y="123" font-family="sans-serif" font-size="8" font-weight="bold" fill="#4db840" text-anchor="middle">ANKAH</text>
+        <text x="206" y="133" font-family="sans-serif" font-size="6" fill="#rgba(255,255,255,0.7)" text-anchor="middle" fill="rgba(255,255,255,0.7)">FARMS →</text>
+        <!-- trees lining the path -->
+        <ellipse cx="160" cy="130" rx="20" ry="26" fill="#1a5c30"/>
+        <rect x="157" y="150" width="5" height="16" fill="#5c3a1e"/>
+        <ellipse cx="240" cy="128" rx="22" ry="28" fill="#2e7d4f"/>
+        <rect x="237" y="150" width="5" height="16" fill="#5c3a1e"/>
+        <ellipse cx="60" cy="125" rx="28" ry="34" fill="#1a5c30"/>
+        <rect x="57" y="152" width="6" height="14" fill="#5c3a1e"/>
+        <ellipse cx="340" cy="122" rx="30" ry="36" fill="#2e7d4f"/>
+        <rect x="337" y="150" width="6" height="14" fill="#5c3a1e"/>
+        <!-- birds in sky -->
+        <path d="M100 40 Q106 35 112 40" stroke="#333" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <path d="M280 55 Q286 50 292 55" stroke="#333" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <path d="M240 30 Q245 26 250 30" stroke="#444" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+        <!-- clouds -->
+        <ellipse cx="80" cy="52" rx="45" ry="18" fill="#fff" opacity="0.9"/>
+        <ellipse cx="108" cy="46" rx="35" ry="15" fill="#fff" opacity="0.95"/>
+        <ellipse cx="310" cy="45" rx="50" ry="19" fill="#fff" opacity="0.85"/>
+        <ellipse cx="340" cy="38" rx="38" ry="16" fill="#fff" opacity="0.9"/>
+      </svg>
+      <div class="gallery-overlay"><span class="gallery-overlay-label">Kotei Daduako, Our Home</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PHOTO CTA -->
+<section class="photo-cta">
+  <div class="photo-cta-box">
+    <div class="icon">
+      <svg viewBox="0 0 34 34" fill="none" stroke="#4db840" stroke-width="1.8">
+        <rect x="3" y="8" width="28" height="22" rx="3"/>
+        <circle cx="17" cy="19" r="6"/>
+        <path d="M12 8 L14 4 L20 4 L22 8"/>
+        <circle cx="26" cy="13" r="2" fill="#4db840" stroke="none"/>
+      </svg>
+    </div>
+    <h3>Real Photos Coming Soon</h3>
+    <p>These illustrations represent the spirit of Ankah Farms. As we grow, we'll be filling this gallery with real photos from our ponds, our land, and our daily work. Watch this space!</p>
+    <a href="contact.html" class="btn btn-primary">Contact Us to Visit</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo"><div class="nav-logo-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M3 15 Q7 12 12 14 Q17 12 21 15" stroke="#08180f" stroke-width="1.6" stroke-linecap="round" fill="none"/><path d="M3 18 Q7 15 12 17 Q17 15 21 18" stroke="#08180f" stroke-width="1.6" stroke-linecap="round" fill="none"/><rect x="8" y="5" width="8" height="8" rx="1" stroke="#08180f" stroke-width="1.5" fill="none"/><path d="M8 7.5L12 5L16 7.5" stroke="#08180f" stroke-width="1.5" fill="none"/><circle cx="18" cy="5.5" r="1.8" stroke="#08180f" stroke-width="1.3" fill="none"/></svg></div><span class="nav-logo-text">Ankah <span>Farms</span></span></a>
+      <p class="footer-brand-tagline">Nature's Goodness</p>
+      <p>Fresh catfish from Kotei Daduako, Ghana.</p>
+    </div>
+    <div class="footer-col"><h5>Pages</h5><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="products.html">Products</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="footer-col"><h5>Order</h5><ul><li><a href="tel:+233539332287">0539 332 287</a></li><li><a href="https://wa.me/233539332287" class="wa-link" target="_blank">WhatsApp</a></li><li><a href="mailto:info@ankahmail.com">info@ankahmail.com</a></li></ul></div>
+    <div class="footer-col"><h5>Location</h5><ul><li><a href="#">Kotei Daduako</a></li><li><a href="#">Ghana</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 Ankah Farms · Kotei Daduako, Ghana</span><span>Made with <span class="lime">♥</span> — Nature's Goodness</span></div>
+</footer>
+
+<a href="https://wa.me/233539332287" target="_blank" class="wa-float"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span class="wa-tooltip">Chat on WhatsApp</span></a>
+<script src="main.js"></script>
+</body>
+</html>
